@@ -1,0 +1,55 @@
+.c-searchbox {
+    margin: 0 auto;
+    text-align: center;
+}
+
+.c-searchbox__input {
+    height: 60px;
+    padding: 0 $std-dim-large;
+    background-color: $dark-grey;
+    color: white;
+    border: none;
+    width: 40%;
+    font-size: 20px;
+    border-radius: $std-dim 0 0 $std-dim;
+    outline: none;
+}
+
+.c-searchbox__button {
+    height: 60px;
+    border: none;
+    color: white;
+    cursor: pointer;
+    font-size: 20px;
+    border-radius: 0 $std-dim $std-dim 0;
+    background: $nasa-blue;
+    vertical-align: bottom;
+    
+    &:hover {
+        background-color: darken($nasa-blue, 5%);
+        transition: background-color 0.5s;
+    }
+}
+
+.c-searchbox__button-icon {
+    height: $std-dim-xlarge;
+    width: $std-dim-xlarge;
+    vertical-align: middle;
+}
+
+.c-searchbox__filter {
+    margin: $std-dim-large 0;
+}
+
+.c-searchbox__label {
+    margin: 0 $std-dim;
+    font-size: $std-dim-large;
+    cursor: pointer;
+}
+
+.c-searchbox__checkbox {
+    height: 20px;
+    width: 20px;
+    margin-right: $std-dim;
+    vertical-align: middle;
+}

@@ -1,0 +1,9 @@
+.c-searchresults {
+    padding: $std-dim-large;
+    text-align: center;
+}
+
+.c-searchresults__item {
+    display: inline-block;
+    margin: $std-dim;
+}
