@@ -2,6 +2,7 @@
     padding: $std-dim-xlarge;
     margin: $std-dim-xlarge;
     border: 1px solid $mid-grey;
+    min-width: 600px;
 }
 
 .c-asset__title {
@@ -19,4 +20,14 @@
     margin: $std-dim-large auto;
     display: block;
     max-width: 100%;
+}
+
+@media (max-width: 600px) {
+    .c-asset {
+        min-width: 0;
+        width: 90%;
+        box-sizing: border-box;
+        margin: $std-dim-large auto;
+        overflow: hidden;
+    }
 }
