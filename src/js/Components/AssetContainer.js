@@ -45,9 +45,8 @@ export default class AssetContainer extends React.Component {
             .then((response) => {
                 return response.json();
             }).then((json) => {
-                console.log(json.collection.items[0].href);
                 this.setState({
-                    filePath:  encodeURI(json.collection.items[0].href)
+                    filePath: encodeURI(json.collection.items[0].href)
                 });
             }).catch(function(ex) {
                 console.log('Failed To Collect Data');

@@ -1,0 +1,43 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Audio Asset Should Match Snapshot 1`] = `
+<div
+  className="c-asset"
+>
+  <h1
+    className="c-asset__title"
+  >
+    Test Title
+  </h1>
+  <p
+    className="c-asset__description"
+  >
+    Test Description
+  </p>
+  <img
+    className="c-asset__image"
+    src="http://images-assets.nasa.gov/audio/Ep7_Total%20Eclipse%20over%20America/Ep7_Total%20Eclipse%20over%20America~orig.mp3"
+  />
+</div>
+`;
+
+exports[`Image Asset Should Match Snapshot 1`] = `
+<div
+  className="c-asset"
+>
+  <h1
+    className="c-asset__title"
+  >
+    Test Title
+  </h1>
+  <p
+    className="c-asset__description"
+  >
+    Test Description
+  </p>
+  <img
+    className="c-asset__image"
+    src="http://placehold.it/400x300"
+  />
+</div>
+`;
