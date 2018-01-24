@@ -1,29 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 
-export default class SearchContainer extends React.Component {
-    constructor() {
-        super();
-        this.state = {
-            query: '',
-            filters: {
-                images: false,
-                audio: false
-            }
-        }
-    }
-    handleQueryChange(event) {
-        this.setState({ query: event.currentTarget.value });
-    }
-    handleFilterCheckbox(event) {
-        const target = event.target;
-        this.setState(prevState => ({
-            filters: {
-                ...prevState.filters,
-                [target.name]: target.checked
-            }
-        }));
-    }
+export default class SearchBox extends React.Component {
     render() {
         return (
             <div>
@@ -32,10 +10,13 @@ export default class SearchContainer extends React.Component {
                     <input type="text" 
                         className="c-searchbox__input" 
                         placeholder="Enter Search Term for Lift Off"
-                        onChange={this.handleQueryChange.bind(this)}
-                        value={this.state.query}
+                        onChange={this.props.handleQueryChange}
+                        value={this.props.query}
                     />
-                    <Link to={"/search/" + this.state.query} className="c-searchbox__button">
+                    <Link 
+                        to={"/search/" + this.props.query} 
+                        className="c-searchbox__button"
+                    >
                         <img src="https://nasa.gov/sites/all/themes/custom/nasatwo/images/search.svg"
                             className="c-searchbox__button-icon" />
                     </Link>
@@ -44,16 +25,16 @@ export default class SearchContainer extends React.Component {
                             <input type="checkbox" 
                                 name="images"
                                 className="c-searchbox__checkbox"
-                                onChange={this.handleFilterCheckbox.bind(this)}
-                                checked={this.state.filters.image}
+                                onChange={this.props.handleFilterCheckbox}
+                                checked={this.props.filters.images}
                             />Images
                         </label>
                         <label className="c-searchbox__label">
                             <input type="checkbox" 
                                 name="audio"
                                 className="c-searchbox__checkbox"
-                                onChange={this.handleFilterCheckbox.bind(this)}
-                                checked={this.state.filters.audio}
+                                onChange={this.props.handleFilterCheckbox}
+                                checked={this.props.filters.audio}
                         />Audio
                         </label>
                     </div>
