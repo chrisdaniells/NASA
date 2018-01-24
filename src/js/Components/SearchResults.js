@@ -10,7 +10,7 @@ export default class SearchContainer extends React.Component {
                     let item = this.props.data[key];
                     if (item.data[0].media_type=="image") {
                         return <Link 
-                                    to={"/asset/" + item.data[0].nasa_id} 
+                                    to={"/asset/image/" + item.data[0].nasa_id} 
                                     className="c-searchresults__item" key={key}
                                 >
                                     <div className="c-searchresults__image-wrapper">
@@ -24,7 +24,7 @@ export default class SearchContainer extends React.Component {
                         return <div className="c-searchresults__item c-searchresults__item--audio" key={key}>
                                     <p className="c-searchresults__item-title">{item.data[0].title}</p>
                                     <p className="c-searchresults__item-description">{item.data[0].description.substring(0,200) + '...'}</p>
-                                    <Link to={"/asset/" + item.data[0].nasa_id} state={{data: item }}>Go to Item</Link>
+                                    <Link to={"/asset/audio/" + item.data[0].nasa_id} state={{data: item }}>Go to Item</Link>
                                 </div>
                     }
 

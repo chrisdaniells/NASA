@@ -10,3 +10,14 @@ html, body {
 h1, p {
     text-align: center;
 }
+
+.logo {
+    width: 200px;
+    margin: $std-dim-large auto;
+    display: block;
+}
+
+audio {
+    margin: $std-dim-large auto;
+    display: block;
+}

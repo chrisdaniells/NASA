@@ -1,0 +1,22 @@
+.c-asset {
+    padding: $std-dim-xlarge;
+    margin: $std-dim-xlarge;
+    border: 1px solid $mid-grey;
+}
+
+.c-asset__title {
+    margin: 0 0 $std-dim-large;
+    font-size: 30px;
+}
+
+.c-asset__description {
+    font-size: 20px;
+    width: 70%;
+    margin: 0 auto;
+}
+
+.c-asset__image {
+    margin: $std-dim-large auto;
+    display: block;
+    max-width: 100%;
+}

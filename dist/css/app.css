@@ -9,6 +9,34 @@ html, body {
 h1, p {
   text-align: center; }
 
+.logo {
+  width: 200px;
+  margin: 20px auto;
+  display: block; }
+
+audio {
+  margin: 20px auto;
+  display: block; }
+
+.c-asset {
+  padding: 40px;
+  margin: 40px;
+  border: 1px solid #ccc; }
+
+.c-asset__title {
+  margin: 0 0 20px;
+  font-size: 30px; }
+
+.c-asset__description {
+  font-size: 20px;
+  width: 70%;
+  margin: 0 auto; }
+
+.c-asset__image {
+  margin: 20px auto;
+  display: block;
+  max-width: 100%; }
+
 .c-searchbox {
   margin: 0 auto;
   text-align: center; }

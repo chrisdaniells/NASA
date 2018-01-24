@@ -1,47 +1,76 @@
 import React from 'react';
-import AssetItem from './AssetItem';
+
+import AssetImage from './AssetImage';
+import AssetAudio from './AssetAudio';
 
 export default class AssetContainer extends React.Component {
     constructor(props) {
         super(props);
-        this.apiUrl = 'https://images-api.nasa.gov/search?nasa_id=';
+        this.apiUrl = 'https://images-api.nasa.gov/';
 
         this.state = {
-            data: {
-                title: '',
-                description: '',
-                imagePath: ''
-            }
+            title: '',
+            description: '',
+            filePath: '',
         }
     }
     componentDidMount() {
         this.getAssetData();
     }
     getAssetData() {
-        let url = this.apiUrl + this.props.match.params.nasaid
+        let url = this.apiUrl + 'search?q=' + this.props.match.params.nasaid;
+
         fetch(url)
             .then((response) => {
                 return response.json();
             }).then((json) => {
                 this.setState({
-                    data: {
-                        title: json.collection.items[0].data[0].title,
-                        description: json.collection.items[0].data[0].description,
-                        imagePath: json.collection.items[0].links[0].href
-                    }
-                })
+                    title: json.collection.items[0].data[0].title,
+                    description: json.collection.items[0].data[0].description,
+                    filePath: this.props.match.params.type == "image" ? json.collection.items[0].links[0].href : ''
+                });
+            }).catch(function(ex) {
+                console.log('Failed To Collect Data');
+            });
+
+        if (this.props.match.params.type == "audio") {
+            this.getAudioFiles();
+        }
+    }
+
+    getAudioFiles() {
+        let url = this.apiUrl + '/asset/' + this.props.match.params.nasaid;
+
+        fetch(url)
+            .then((response) => {
+                return response.json();
+            }).then((json) => {
+                this.setState({
+                    filePath: json.collection.items[0].href
+                });
             }).catch(function(ex) {
                 console.log('Failed To Collect Data');
             });
     }
     
     render() {
-        return (
-            <AssetItem 
-                title={this.state.data.title}
-                description={this.state.data.description}
-                imagePath={this.state.data.imagePath}
-            />
-        )
+        if (this.props.match.params.type == "image") {
+            return (
+                <AssetImage 
+                    title={this.state.title}
+                    description={this.state.description}
+                    filePath={this.state.filePath}
+                />
+            )
+
+        } else if (this.props.match.params.type == "audio") {
+            return(
+                <AssetAudio
+                    title={this.state.title}
+                    description={this.state.description}
+                    filePath={this.state.filePath}
+                />
+            )
+        }
     }
 }
