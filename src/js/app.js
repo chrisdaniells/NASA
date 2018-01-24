@@ -9,7 +9,7 @@ import SearchContainer from './Components/SearchContainer';
 render (
     <Router>
         <Switch>
-            <Route path="/search/:query" component={SearchContainer} />
+            <Route path="/search/:query?" component={SearchContainer} />
             <Route path="/asset/:id" component={AssetContainer} />
             <Route exact path="/" component={SearchContainer} />
         </Switch>
