@@ -16,7 +16,8 @@
 }
 
 .c-searchbox__button {
-    height: 60px;
+    display: inline-block;
+    padding: $std-dim;
     border: none;
     color: white;
     cursor: pointer;
