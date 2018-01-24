@@ -1,6 +1,6 @@
 import React from 'react';
 import { render } from 'react-dom';
-import { BrowserRouter as Router, Route } from 'react-router-dom'
+import { HashRouter as Router, Route } from 'react-router-dom';
 
 import AssetContainer from './Components/AssetContainer';
 import SearchContainer from './Components/SearchContainer';
