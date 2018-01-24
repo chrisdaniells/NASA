@@ -5,11 +5,24 @@ export default class SearchContainer extends React.Component {
     constructor() {
         super();
         this.state = {
-            query: ''
+            query: '',
+            filters: {
+                images: false,
+                audio: false
+            }
         }
     }
     handleQueryChange(event) {
         this.setState({ query: event.currentTarget.value });
+    }
+    handleFilterCheckbox(event) {
+        const target = event.target;
+        this.setState(prevState => ({
+            filters: {
+                ...prevState.filters,
+                [target.name]: target.checked
+            }
+        }));
     }
     render() {
         return (
@@ -28,10 +41,20 @@ export default class SearchContainer extends React.Component {
                     </Link>
                     <div className="c-searchbox__filter">
                         <label className="c-searchbox__label">
-                            <input type="checkbox" className="c-searchbox__checkbox" />Images
+                            <input type="checkbox" 
+                                name="images"
+                                className="c-searchbox__checkbox"
+                                onChange={this.handleFilterCheckbox.bind(this)}
+                                checked={this.state.filters.image}
+                            />Images
                         </label>
                         <label className="c-searchbox__label">
-                            <input type="checkbox" className="c-searchbox__checkbox" />Audio
+                            <input type="checkbox" 
+                                name="audio"
+                                className="c-searchbox__checkbox"
+                                onChange={this.handleFilterCheckbox.bind(this)}
+                                checked={this.state.filters.audio}
+                        />Audio
                         </label>
                     </div>
                 </div>
