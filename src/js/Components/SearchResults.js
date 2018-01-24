@@ -3,7 +3,6 @@ import { Link } from 'react-router-dom';
 
 export default class SearchContainer extends React.Component {
     render() {
-        console.log(this.props.data);
         return (
             <div className="c-searchresults">
                 {Object.keys(this.props.data).map((key) => {
