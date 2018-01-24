@@ -123,8 +123,16 @@ h1, p {
 .c-searchresults__item-title {
   font-size: 30px; }
 
+@media (max-width: 600px) {
+  .c-searchresults__item {
+    width: 90%;
+    margin: 10px auto; } }
+
 .c-wrapper {
   width: 100%;
   max-width: 1020px;
   min-width: 600px;
   margin: 0 auto; }
+  @media (max-width: 600px) {
+    .c-wrapper {
+      min-width: 320px; } }

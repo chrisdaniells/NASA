@@ -3,4 +3,8 @@
     max-width: 1020px;
     min-width: 600px;
     margin: 0 auto;
+
+    @media (max-width: 600px) {
+        min-width: 320px;
+    }
 }
