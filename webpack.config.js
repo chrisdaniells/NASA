@@ -9,9 +9,9 @@ const PATHS = {
 module.exports = {
     devtool: 'inline-sourcemap',
     context: __dirname,
-    entry: PATHS.app,
+    entry: ['whatwg-fetch', PATHS.app],
     output: {
-        path:  PATHS.dist,
+        path: PATHS.dist,
         filename: 'app.js'
     },
     module: {

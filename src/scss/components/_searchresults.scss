@@ -6,4 +6,27 @@
 .c-searchresults__item {
     display: inline-block;
     margin: $std-dim;
+    width: 200px;
+    height: 130px;
+    overflow: hidden;
+    border: 1px solid $mid-grey;
+    padding: $std-dim;
+
+    &.c-searchresults__item--audio {
+        width: 100%;
+        height: auto;
+    }
+}
+
+.c-searchresults__image-wrapper {
+    height: 100%;
+    overflow: hidden;
+}
+
+.c-searchresults__image {
+    width: 100%;
+}
+
+.c-searchresults__item-title {
+    font-size: 30px;
 }

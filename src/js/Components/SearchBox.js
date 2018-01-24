@@ -1,32 +1,37 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
 
 export default class SearchBox extends React.Component {
+    constructor(props) {
+        super(props);
+    }
     render() {
         return (
             <div>
                 <h1>Nasa Search</h1>
                 <div className="c-searchbox">
-                    <input type="text" 
-                        className="c-searchbox__input" 
-                        placeholder="Enter Search Term for Lift Off"
-                        onChange={this.props.handleQueryChange}
-                        value={this.props.query}
-                    />
-                    <Link 
-                        to={"/search/" + this.props.query} 
-                        className="c-searchbox__button"
-                    >
-                        <img src="https://nasa.gov/sites/all/themes/custom/nasatwo/images/search.svg"
-                            className="c-searchbox__button-icon" />
-                    </Link>
+                    <form onSubmit={this.props.handleSearchSubmit}>
+                        <input type="text" 
+                            className="c-searchbox__input" 
+                            placeholder="Enter Search Term for Lift Off"
+                            onChange={this.props.handleQueryChange}
+                            value={this.props.query}
+                        />
+                        <button 
+                            type="submit"
+                            className="c-searchbox__button" 
+                        >
+                            <img src="https://nasa.gov/sites/all/themes/custom/nasatwo/images/search.svg"
+                                className="c-searchbox__button-icon" />
+                        </button>
+                    </form>
+
                     <div className="c-searchbox__filter">
                         <label className="c-searchbox__label">
                             <input type="checkbox" 
-                                name="images"
+                                name="image"
                                 className="c-searchbox__checkbox"
                                 onChange={this.props.handleFilterCheckbox}
-                                checked={this.props.filters.images}
+                                checked={this.props.filters.image}
                             />Images
                         </label>
                         <label className="c-searchbox__label">
