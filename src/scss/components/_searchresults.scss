@@ -11,10 +11,13 @@
     overflow: hidden;
     border: 1px solid $mid-grey;
     padding: $std-dim;
+    box-sizing: border-box;
 
     &.c-searchresults__item--audio {
         width: 100%;
         height: auto;
+        padding:$std-dim-large;
+        margin: $std-dim 0;
     }
 }
 

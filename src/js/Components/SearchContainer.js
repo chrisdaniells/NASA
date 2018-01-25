@@ -24,7 +24,6 @@ export default class SearchContainer extends React.Component {
                 .then((response) => {
                     return response.json();
                 }).then((json) => {
-                    console.log(json);
                     this.setState({
                         data: json.collection.items
                     });

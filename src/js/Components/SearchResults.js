@@ -23,7 +23,7 @@ export default class SearchContainer extends React.Component {
                         return <div className="c-searchresults__item c-searchresults__item--audio" key={key}>
                                     <p className="c-searchresults__item-title">{item.data[0].title}</p>
                                     <p className="c-searchresults__item-description">{item.data[0].description.substring(0,200) + '...'}</p>
-                                    <Link to={"/asset/audio/" + item.data[0].nasa_id} state={{data: item }}>Go to Item</Link>
+                                    <Link to={"/asset/audio/" + item.data[0].nasa_id} state={{data: item }} className="c-button">Go to Item</Link>
                                 </div>
                     }
 

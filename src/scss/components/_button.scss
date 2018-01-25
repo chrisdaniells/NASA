@@ -1,0 +1,16 @@
+.c-button {
+    padding: $std-dim $std-dim-large;
+    margin: 0 $std-dim;
+    border: none;
+    color: white;
+    cursor: pointer;
+    font-size: 20px;
+    background: $nasa-blue;
+    text-decoration: none;
+    display: inline-block;
+
+    &:hover {
+        background-color: darken($nasa-blue, 5%);
+        transition: background-color 0.5s;
+    }
+}
