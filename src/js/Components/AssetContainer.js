@@ -4,8 +4,8 @@ import AssetImage from './AssetImage';
 import AssetAudio from './AssetAudio';
 
 export default class AssetContainer extends React.Component {
-    constructor(props) {
-        super(props);
+    constructor() {
+        super();
         this.apiUrl = 'https://images-api.nasa.gov/';
 
         this.state = {
