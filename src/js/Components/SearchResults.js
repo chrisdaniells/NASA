@@ -10,7 +10,7 @@ export default class SearchContainer extends React.Component {
                     if (item.data[0].media_type=="image") {
                         return <Link 
                                     to={"/asset/image/" + item.data[0].nasa_id} 
-                                    className="c-searchresults__item" key={key}
+                                    className="c-searchresults__item" key={item.data[0].title + key}
                                 >
                                     <div className="c-searchresults__image-wrapper">
                                         <img 
