@@ -6,6 +6,7 @@ export default class SearchBox extends React.Component {
         super(props);
     }
     checkKeyCode(event) {
+        // Simulate form enter
         if (event.keyCode === 13) {
             document.getElementById("submitButton").click();
         }

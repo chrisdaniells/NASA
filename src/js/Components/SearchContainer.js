@@ -14,10 +14,12 @@ export default class SearchContainer extends React.Component {
         }
 
         this.apiUrl = 'https://images-api.nasa.gov/search';
+        this.loadingOverlay = document.getElementById('loading-overlay');
     }
 
     getNASAData() {
         if (this.state.query) {
+            this.loadingOverlay.classList.add("active");
             let url = this.apiUrl + '?q=' + this.state.query + '&media_type=' + this.state.filter ;
             
             fetch(url)
@@ -27,8 +29,10 @@ export default class SearchContainer extends React.Component {
                     this.setState({
                         data: json.collection.items
                     });
+                    this.loadingOverlay.classList.remove("active");
                 }).catch(function() {
                     console.log('Failed To Collect Data');
+                    this.loadingOverlay.classList.remove("active");
                 });
         }
 
