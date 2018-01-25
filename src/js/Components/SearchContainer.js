@@ -22,12 +22,11 @@ export default class SearchContainer extends React.Component {
 
     getNASAData() {
         if (this.props.match.params.query) {
-            let query = this.state.query;
             let filter;
             if (this.state.filters.image || this.state.filters.audio) {
                 filter = this.state.filters.image ? 'image' : 'audio';
             }
-            let url = this.apiUrl + '?q=' + query + (filter ? '&media_type=' + filter : '');
+            let url = this.apiUrl + '?q=' + this.state.query + (filter ? '&media_type=' + filter : '');
             
             fetch(url)
                 .then((response) => {
