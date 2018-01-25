@@ -6,6 +6,7 @@ export default class SearchBox extends React.Component {
         super(props);
     }
     triggerSearchClick() {
+        // Form submit - see github Readme
         document.getElementById('searchButton').click();
     }
     render() {
