@@ -47,6 +47,7 @@ export default class SearchContainer extends React.Component {
 
     handleSearchSubmit() {
         this.getNASAData();
+        window.location = '#search/'+this.state.query+'/'+this.state.filter;
     }
 
     componentDidMount() {
