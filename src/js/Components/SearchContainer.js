@@ -1,5 +1,4 @@
 import React from 'react';
-import { withRouter } from 'react-router-dom';
 
 import SearchBox from './SearchBox';
 import SearchResults from './SearchResults';
@@ -10,10 +9,7 @@ export default class SearchContainer extends React.Component {
 
         this.state = {
             query: this.props.match.params.query || '',
-            filters: {
-                image: true,
-                audio: false
-            },
+            filter: this.props.match.params.assettype || 'image',
             data: {}
         }
 
@@ -21,12 +17,8 @@ export default class SearchContainer extends React.Component {
     }
 
     getNASAData() {
-        if (this.props.match.params.query) {
-            let filter;
-            if (this.state.filters.image || this.state.filters.audio) {
-                filter = this.state.filters.image ? 'image' : 'audio';
-            }
-            let url = this.apiUrl + '?q=' + this.state.query + (filter ? '&media_type=' + filter : '');
+        if (this.state.query) {
+            let url = this.apiUrl + '?q=' + this.state.query + '&media_type=' + this.state.filter ;
             
             fetch(url)
                 .then((response) => {
@@ -34,7 +26,7 @@ export default class SearchContainer extends React.Component {
                 }).then((json) => {
                     this.setState({
                         data: json.collection.items
-                    })
+                    });
                 }).catch(function() {
                     console.log('Failed To Collect Data');
                 });
@@ -49,15 +41,12 @@ export default class SearchContainer extends React.Component {
     handleFilterCheckbox(event) {
         const target = event.target;
         this.setState(prevState => ({
-            filters: {
-                image: target.name=='image',
-                audio: target.name=='audio',
-            }
+            filter: target.name
         }));
     }
+
     handleSearchSubmit() {
         this.getNASAData();
-        this.props.history.push('/search/' + this.state.query);
     }
 
     componentDidMount() {
@@ -69,7 +58,7 @@ export default class SearchContainer extends React.Component {
             <div>
                 <SearchBox 
                     query={this.state.query}
-                    filters={this.state.filters}
+                    filter={this.state.filter}
                     handleQueryChange={this.handleQueryChange.bind(this)}
                     handleFilterCheckbox={this.handleFilterCheckbox.bind(this)}
                     handleSearchSubmit={this.handleSearchSubmit.bind(this)}
