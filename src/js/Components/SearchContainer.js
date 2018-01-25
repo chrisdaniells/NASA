@@ -18,12 +18,13 @@ export default class SearchContainer extends React.Component {
 
     getNASAData() {
         if (this.state.query) {
-            let url = this.apiUrl + '?q=' + this.props.match.params.query + '&media_type=' + this.state.filter ;
+            let url = this.apiUrl + '?q=' + this.state.query + '&media_type=' + this.state.filter ;
             
             fetch(url)
                 .then((response) => {
                     return response.json();
                 }).then((json) => {
+                    console.log(json);
                     this.setState({
                         data: json.collection.items
                     });
