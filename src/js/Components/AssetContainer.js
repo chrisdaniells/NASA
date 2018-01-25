@@ -29,7 +29,7 @@ export default class AssetContainer extends React.Component {
                     description: json.collection.items[0].data[0].description,
                     filePath: this.props.match.params.type == "image" ? json.collection.items[0].links[0].href : ''
                 });
-            }).catch(function(ex) {
+            }).catch(function() {
                 console.log('Failed To Collect Data');
             });
 

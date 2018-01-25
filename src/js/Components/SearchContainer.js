@@ -35,7 +35,7 @@ export default class SearchContainer extends React.Component {
                     this.setState({
                         data: json.collection.items
                     })
-                }).catch(function(ex) {
+                }).catch(function() {
                     console.log('Failed To Collect Data');
                 });
         }
