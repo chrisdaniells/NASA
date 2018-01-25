@@ -18,7 +18,7 @@ export default class SearchContainer extends React.Component {
 
     getNASAData() {
         if (this.state.query) {
-            let url = this.apiUrl + '?q=' + this.state.query + '&media_type=' + this.state.filter ;
+            let url = this.apiUrl + '?q=' + this.props.match.params.query + '&media_type=' + this.state.filter ;
             
             fetch(url)
                 .then((response) => {
@@ -40,15 +40,14 @@ export default class SearchContainer extends React.Component {
 
     handleFilterCheckbox(event) {
         const target = event.target;
+
         this.setState(prevState => ({
             filter: target.name
         }));
     }
 
     handleSearchSubmit() {
-        this.getNASAData();
-        window.location = '#search/' + this.state.query + '/' + this.state.filter;
-        //this.props.history.push('/search/' + this.state.query + '/' + this.state.filter);
+        this.getNASAData();   
     }
 
     componentDidMount() {
