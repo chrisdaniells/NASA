@@ -14,7 +14,7 @@ https://chrisdaniells.github.io/NASA/
 ## To Run Locally:
 - run `npm i`
 - run `grunt` and `webpack`
-- run `test` for Jasmine tests
+- run `npm test` for Jasmine tests
 
 ## Things to be improved:
 - More tests
