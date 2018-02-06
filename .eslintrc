@@ -1,0 +1,13 @@
+{
+  "parser": "babel-eslint",
+  "env": {
+    "browser": true,
+    "jest": true
+  },
+  "extends": "airbnb",
+  "rules": {
+    "semi": ["error", "never"],
+    "object-curly-newline": "off",
+    "react/jsx-filename-extension": "off"
+  }
+}
