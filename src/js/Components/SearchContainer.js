@@ -10,18 +10,39 @@ export default class SearchContainer extends React.Component {
         this.state = {
             query: this.props.match.params.query || '',
             filter: this.props.match.params.assettype || 'image',
-            data: {}
+            data: {},
+            favourites: [],
         }
 
         this.apiUrl = 'https://images-api.nasa.gov/search';
         this.loadingOverlay = document.getElementById('loading-overlay');
     }
 
+    handleFavouriteClick(event, id) {
+        event.preventDefault()
+
+        const { favourites } = this.state;
+        let favouritesArray = this.state.favourites;
+
+        if (favourites.find(i => i === id)) {
+            this.setState({
+                favourites: favourites.filter(i => i !== id)
+            })
+        } else {
+            this.setState({
+                favourites: [...favourites, id]
+            })
+        }
+
+
+
+    }
+
     getNASAData() {
         if (this.state.query) {
             this.loadingOverlay.classList.add("active");
             let url = this.apiUrl + '?q=' + this.state.query + '&media_type=' + this.state.filter ;
-            
+
             fetch(url)
                 .then((response) => {
                     return response.json();
@@ -51,7 +72,7 @@ export default class SearchContainer extends React.Component {
     }
 
     handleSearchSubmit() {
-        this.getNASAData();   
+        this.getNASAData();
     }
 
     componentDidMount() {
@@ -61,14 +82,21 @@ export default class SearchContainer extends React.Component {
     render() {
         return (
             <div>
-                <SearchBox 
+                <SearchBox
                     query={this.state.query}
                     filter={this.state.filter}
                     handleQueryChange={this.handleQueryChange.bind(this)}
                     handleFilterCheckbox={this.handleFilterCheckbox.bind(this)}
                     handleSearchSubmit={this.handleSearchSubmit.bind(this)}
                 />
-                { this.props.match.params.query && <SearchResults data={this.state.data}/> }
+                { JSON.stringify(this.state.favourites) }
+                { this.props.match.params.query && (
+                    <SearchResults
+                        data={this.state.data}
+                        favourites={this.state.favourites}
+                        handleFavouriteClick={this.handleFavouriteClick.bind(this)}
+                    />
+                ) }
             </div>
         )
     }
