@@ -1,34 +1,40 @@
-import React from 'react';
-import { Link } from 'react-router-dom';
+import React from 'react'
+import { Link } from 'react-router-dom'
 
 export default class SearchContainer extends React.Component {
-    render() {
-        return (
-            <div className="c-searchresults">
-                {Object.keys(this.props.data).map((key) => {
-                    let item = this.props.data[key];
-                    if (item.data[0].media_type=="image") {
-                        return <Link 
-                                    to={"/asset/image/" + item.data[0].nasa_id} 
-                                    className="c-searchresults__item" key={item.data[0].title + key}
-                                >
-                                    <div className="c-searchresults__image-wrapper">
-                                        <img 
-                                            src={item.links[0].href}
-                                            className="c-searchresults__image" 
-                                        />
-                                    </div>
-                                </Link>
-                    } else if (item.data[0].media_type=="audio") {
-                        return <div className="c-searchresults__item c-searchresults__item--audio" key={key}>
-                                    <p className="c-searchresults__item-title">{item.data[0].title}</p>
-                                    <p className="c-searchresults__item-description">{item.data[0].description.substring(0,200) + '...'}</p>
-                                    <Link to={"/asset/audio/" + item.data[0].nasa_id} state={{data: item }} className="c-button">Go to Item</Link>
-                                </div>
-                    }
-
-                })}
-            </div>
-        )
-    }
+  render() {
+    return (
+      <div className="c-searchresults">
+        {
+            Object.keys(this.props.data).map((key) => {
+                const item = this.props.data[key]
+                if (item.data[0].media_type == 'image') {
+                    return (
+                    <Link
+                        to={`/asset/image/${item.data[0].nasa_id}`}
+                        className="c-searchresults__item"
+                        key={item.data[0].title + key}
+                    >
+                        <div className="c-searchresults__image-wrapper">
+                            <button
+                                onClick={(event) => this.props.handleFavouriteClick(event, item.data[0].nasa_id)}
+                            >
+                                {
+                                    this.props.favourites.find(id => id === item.data[0].nasa_id)
+                                        ? 'Unfavourite'
+                                        : 'Favourite'
+                                }
+                            </button>
+                            <img
+                                src={item.links[0].href}
+                                className="c-searchresults__image"
+                            />
+                        </div>
+                    </Link>)
+                }
+            })
+        }
+      </div>
+    )
+  }
 }
